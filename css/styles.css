@@ -76,10 +76,10 @@ strong { color: var(--ink); font-weight: 600; }
 .header.is-scrolled { background: rgba(251,248,243,.96); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); }
 .header.is-scrolled .brand__name { color: var(--ink); }
 .brand { display: flex; align-items: center; gap: .6rem; z-index: 60; color: var(--ink); }
-.brand__mark { width: 34px; flex: 0 0 auto; }
+.brand__mark { width: 27px; flex: 0 0 auto; }
 .brand__mark svg { width: 100%; height: auto; }
 .brand__text { display: flex; flex-direction: column; line-height: 1; }
-.brand__name { font-family: var(--font-script); font-weight: 400; font-size: 2.2rem; letter-spacing: .01em; line-height: .82; }
+.brand__name { font-family: var(--font-display); font-weight: 700; font-size: 1.45rem; letter-spacing: -0.02em; line-height: 1; }
 .brand__sub { font-family: var(--font-body); font-weight: 600; font-size: .56rem; letter-spacing: .34em; text-transform: uppercase; color: var(--ink-soft); margin-top: 2px; padding-left: 1px; }
 .header.on-hero:not(.is-scrolled) .brand { color: #fff; }
 .header.on-hero:not(.is-scrolled) .brand__sub { color: rgba(255,255,255,.82); }
