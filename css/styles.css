@@ -78,7 +78,7 @@ strong { color: var(--ink); font-weight: 600; }
 .brand { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .5rem; z-index: 59; color: var(--ink); }
 .brand__mark { width: 24px; flex: 0 0 auto; }
 .brand__mark svg { width: 100%; height: auto; }
-.brand__name { font-family: var(--font-display); font-weight: 600; font-size: clamp(.78rem,1.4vw,1.02rem); letter-spacing: .26em; text-transform: uppercase; white-space: nowrap; line-height: 1; }
+.brand__name { font-family: "Helvetica Neue", "Arimo", Helvetica, Arial, sans-serif; font-weight: 700; font-size: clamp(.9rem,1.55vw,1.2rem); letter-spacing: .085em; text-transform: uppercase; white-space: nowrap; line-height: 1; }
 .lang { position: relative; z-index: 60; }
 .lang__btn { display: flex; align-items: center; gap: .35rem; font-weight: 600; font-size: .85rem; color: inherit; }
 .header.on-hero:not(.is-scrolled) .lang__btn { color: #fff; }
