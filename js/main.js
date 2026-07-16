@@ -143,6 +143,42 @@
     fill();
   })();
 
+  /* ---- Yomied chat + Fabled Flow dictation demos ---- */
+  (function () {
+    var chat = document.getElementById("yomiedChat");
+    if (chat && "IntersectionObserver" in window) {
+      var items = chat.querySelectorAll(".bubble, .receipt");
+      var played = false;
+      function play() {
+        if (played) return; played = true;
+        items.forEach(function (el, i) { setTimeout(function () { el.classList.add("show"); }, 450 + i * 950); });
+      }
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { play(); io.disconnect(); } });
+      }, { threshold: 0.35 });
+      io.observe(chat);
+    }
+    var ft = document.getElementById("flowText");
+    if (ft) {
+      var msg = "Draft a reply to Sarah — confirm the Sea View villa is free 12–16 Aug.";
+      var cur = '<span class="cur"></span>';
+      function type() {
+        var i = 0;
+        (function step() {
+          if (i <= msg.length) { ft.innerHTML = msg.slice(0, i) + cur; i++; setTimeout(step, 42); }
+          else { setTimeout(function () { ft.innerHTML = cur; setTimeout(type, 700); }, 3200); }
+        })();
+      }
+      if (reduceMotion) { ft.textContent = msg; }
+      else if ("IntersectionObserver" in window) {
+        var io2 = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { type(); io2.disconnect(); } });
+        }, { threshold: 0.4 });
+        io2.observe(ft);
+      } else { type(); }
+    }
+  })();
+
   /* ---- Ensure hero video plays (some mobile browsers) ---- */
   var v = document.querySelector(".hero__media video");
   if (v) {
