@@ -17,17 +17,25 @@
 <body>
 
 <header class="header on-hero" id="header">
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="offcanvas">
+    <span class="menu-btn__icon" aria-hidden="true"><span class="menu-btn__line"></span><span class="menu-btn__line"></span><span class="menu-btn__line"></span></span>
+    <span class="menu-btn__label">Menu</span>
+  </button>
   <a class="brand" href="#top" aria-label="Crown Faith Development home">
     <span class="brand__mark"><svg viewBox="0 0 64 72" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M32 24 L48 33 L48 51 L32 60 L16 51 L16 33 Z"/><path d="M32 42 L16 33 M32 42 L48 33 M32 42 L32 60"/><path d="M32 15 L16 33 M32 15 L48 33 M32 15 L32 42"/></svg></span>
-    <span class="brand__text">
-      <span class="brand__name">Crown Faith</span>
-      <span class="brand__sub">Development</span>
-    </span>
+    <span class="brand__name">Crown Faith Development</span>
   </a>
-  <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="offcanvas">
-    <span class="menu-btn__label">Menu</span>
-    <span class="menu-btn__icon" aria-hidden="true"><span class="menu-btn__line"></span><span class="menu-btn__line"></span><span class="menu-btn__line"></span></span>
-  </button>
+  <div class="lang" id="lang">
+    <button class="lang__btn" id="langBtn" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.6 2.6 15.4 0 18M12 3c-2.6 2.6-2.6 15.4 0 18"/></svg>
+      <span id="langLabel">EN</span>
+    </button>
+    <div class="lang__menu" id="langMenu" role="menu">
+      <button data-lang="en" data-label="EN" role="menuitem">English</button>
+      <button data-lang="zh-Hans" data-label="简" role="menuitem">简体中文</button>
+      <button data-lang="zh-Hant" data-label="繁" role="menuitem">繁體中文</button>
+    </div>
+  </div>
 </header>
 
 <div class="nav-overlay" id="navOverlay"></div>
@@ -101,10 +109,9 @@
   <div class="wrap">
     <span class="eyebrow reveal" style="color:var(--sunny)">Tools we built</span>
     <h2 class="reveal s3">We build the software we run on</h2>
-    <p class="lead reveal d1" style="margin-top:1rem;max-width:66ch">A great back office means moving information fast and getting the busywork out of the way. When the tools we needed didn't exist, we built them — consumer-friendly software you just open and use. The same tools that run our own properties are the products we now offer.</p>
+    <p class="lead reveal d1" data-words style="margin-top:1rem;max-width:66ch">A great back office means moving information fast and getting the busywork out of the way. When the tools we needed didn't exist, we built them — consumer-friendly software you just open and use. The same tools that run our own properties are the products we now offer.</p>
     <div class="prod-grid">
       <article class="product product--yomied reveal">
-        <img class="product__ill" src="assets/ill/yomied-sm.png" alt="" loading="lazy" />
         <span class="product__tag">Yomied · the back-office brain</span>
         <h3>Your back office, in the chats you already use</h3>
         <p>An assistant that lives inside WhatsApp, WeChat and Telegram. Add it to a chat and it quietly organises everything it learns, then answers your questions right there — in your language, with the proof attached. No app to learn, no files to manage.</p>
@@ -117,7 +124,6 @@
         <a class="btn btn--primary" href="https://yomied.com" target="_blank" rel="noopener">Visit Yomied →</a>
       </article>
       <article class="product product--fabled reveal d1">
-        <img class="product__ill" src="assets/ill/fabled-sm.png" alt="" loading="lazy" />
         <span class="product__tag">Fabled Flow · dictation</span>
         <h3>Turn talk into done, in any app</h3>
         <p>Hold a key, speak, release — clean, formatted text lands at your cursor in whatever app you're in. A booking note, a supplier email, a maintenance report, done in seconds. Runs entirely on your device, so nothing leaves it.</p>
@@ -151,6 +157,7 @@
       <div class="step reveal d2"><h3>Construction &amp; project management</h3></div>
       <div class="step reveal d1"><h3>Property management &amp; maintenance</h3></div>
       <div class="step reveal d2"><h3>Booking, revenue &amp; admin support</h3></div>
+      <div class="step reveal d3"><h3>Software to run it — we build the tools that keep bookings, billing and operations moving</h3></div>
     </div>
   </div>
 </section>

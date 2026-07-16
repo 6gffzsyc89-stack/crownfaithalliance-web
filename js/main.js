@@ -80,6 +80,69 @@
   window.addEventListener("scroll", fillWords, { passive: true });
   fillWords();
 
+  /* ---- Language selector + locale/country detection ---- */
+  (function () {
+    var lang = document.getElementById("lang");
+    var btn = document.getElementById("langBtn");
+    var label = document.getElementById("langLabel");
+    if (!lang || !btn || !label) return;
+    function apply(code, lbl, persist) {
+      label.textContent = lbl;
+      document.documentElement.setAttribute("lang", code);
+      if (persist) { try { localStorage.setItem("cf-lang", code); } catch (e) {} }
+    }
+    var stored = null; try { stored = localStorage.getItem("cf-lang"); } catch (e) {}
+    var nav = (navigator.language || "en").toLowerCase();
+    var code = "en", lbl = "EN";
+    if (stored) {
+      code = stored; lbl = stored === "zh-Hans" ? "简" : stored === "zh-Hant" ? "繁" : "EN";
+    } else if (nav === "zh-tw" || nav === "zh-hk" || nav === "zh-mo" || nav.indexOf("zh-hant") === 0) {
+      code = "zh-Hant"; lbl = "繁";
+    } else if (nav === "zh" || nav === "zh-cn" || nav === "zh-sg" || nav.indexOf("zh-hans") === 0) {
+      code = "zh-Hans"; lbl = "简";
+    }
+    apply(code, lbl, false);
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = lang.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    lang.querySelectorAll("[data-lang]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        apply(b.getAttribute("data-lang"), b.getAttribute("data-label"), true);
+        lang.classList.remove("open");
+      });
+    });
+    document.addEventListener("click", function () { lang.classList.remove("open"); });
+  })();
+
+  /* ---- Salboy-style word-fill on scroll ---- */
+  (function () {
+    if (reduceMotion) return;
+    document.querySelectorAll("[data-words]").forEach(function (el) {
+      var words = el.textContent.trim().split(/\s+/);
+      el.textContent = "";
+      words.forEach(function (w, i) {
+        var s = document.createElement("span");
+        s.className = "w";
+        s.textContent = w + (i < words.length - 1 ? " " : "");
+        el.appendChild(s);
+      });
+      el.classList.add("words");
+    });
+    var all = Array.prototype.slice.call(document.querySelectorAll(".words .w"));
+    function fill() {
+      var vh = window.innerHeight;
+      all.forEach(function (w) {
+        var r = w.getBoundingClientRect();
+        if (r.top < vh * 0.82 && r.bottom > 0) w.classList.add("on");
+      });
+    }
+    window.addEventListener("scroll", fill, { passive: true });
+    window.addEventListener("resize", fill);
+    fill();
+  })();
+
   /* ---- Ensure hero video plays (some mobile browsers) ---- */
   var v = document.querySelector(".hero__media video");
   if (v) {
