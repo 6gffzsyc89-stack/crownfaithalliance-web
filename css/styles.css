@@ -78,7 +78,7 @@ strong { color: var(--ink); font-weight: 600; }
 .brand { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .5rem; z-index: 59; color: var(--ink); }
 .brand__mark { width: 24px; flex: 0 0 auto; }
 .brand__mark svg { width: 100%; height: auto; }
-.brand__name { font-family: var(--font-display); font-weight: 700; font-size: clamp(.78rem,1.5vw,1.1rem); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; line-height: 1; }
+.brand__name { font-family: var(--font-display); font-weight: 600; font-size: clamp(.78rem,1.4vw,1.02rem); letter-spacing: .26em; text-transform: uppercase; white-space: nowrap; line-height: 1; }
 .lang { position: relative; z-index: 60; }
 .lang__btn { display: flex; align-items: center; gap: .35rem; font-weight: 600; font-size: .85rem; color: inherit; }
 .header.on-hero:not(.is-scrolled) .lang__btn { color: #fff; }
@@ -155,13 +155,23 @@ body.menu-open .offcanvas { transform: translateX(0); }
 .svc { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(18px,2vw,26px); transition: transform .25s, box-shadow .25s; }
 .svc:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); }
 .svc__n { font-family: var(--font-display); font-size: .9rem; font-weight: 500; color: var(--accent); }
+.svc__ic { position: relative; width: 46px; height: 46px; display: inline-grid; place-items: center; margin-bottom: .9rem; }
+.svc__ic .ring { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent); }
+.svc__ic .ic { width: 21px; height: 21px; color: var(--ink); position: relative; }
+/* broken-circle border (45° gap) for bordered call-out buttons */
+.btn--ghost, .btn--light { position: relative; }
+.btn--ghost { border: 0; background:
+  linear-gradient(var(--canvas), var(--canvas)) padding-box,
+  conic-gradient(from 48deg, var(--ink) 0 336deg, transparent 336deg 360deg) border-box;
+  border: 1.5px solid transparent; }
 .svc h3 { margin: .3rem 0 .5rem; font-size: 1.12rem; }
 .svc p { font-size: .92rem; }
 
 /* Software / products (dark, elegant) */
 .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(14px,1.8vw,22px); margin-top: 2.2rem; }
 .product { border-radius: 22px; padding: clamp(24px,3vw,38px); background: var(--paper); border: 1px solid var(--line); color: var(--ink); overflow: hidden; }
-.product--yomied, .product--fabled { background: var(--paper); border-color: var(--line); }
+.product--yomied { background: #F2EADF; border-color: transparent; }
+.product--fabled { background: #F8E5EA; border-color: transparent; }
 .product h3 { color: var(--ink); font-size: clamp(1.35rem,2.3vw,1.8rem); }
 .product p { color: var(--ink-soft); margin: .6rem 0 1.1rem; font-size: .95rem; }
 .product__tag { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 700; color: var(--accent-ink); }
@@ -199,7 +209,7 @@ body.menu-open .offcanvas { transform: translateX(0); }
 .proj__name { font-family: var(--font-display); font-weight: 500; font-size: 1.15rem; margin: .15rem 0; }
 .proj__status { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .02em; padding: .22em .7em; border-radius: 100px; background: rgba(255,255,255,.16); backdrop-filter: blur(4px); }
 .proj__status--soon { background: var(--accent); color: #fff; }
-.proj--coming { background: #DEE8DD; }
+.proj--coming { background: #EFE7DA; }
 .proj--coming::after { display: none; }
 .proj--coming .proj__name, .proj--coming .proj__loc { color: var(--ink); }
 .subhead { font-family: var(--font-body); font-weight: 600; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin: 2rem 0 0; }
